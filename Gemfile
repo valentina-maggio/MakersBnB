@@ -12,6 +12,7 @@ gem 'rake', '~> 13.0'
 gem 'sinatra'
 gem 'sinatra-activerecord', '~> 2.0'
 gem 'sinatra-contrib'
+gem 'rerun'
 
 group :test do
   gem 'capybara'

@@ -3,6 +3,8 @@
 require 'sinatra/base'
 require 'sinatra/reloader'
 require 'sinatra/activerecord'
+require './lib/user'
+require './lib/space'
 
 class MakersBnB < Sinatra::Base
   configure :development do
@@ -13,7 +15,13 @@ class MakersBnB < Sinatra::Base
   register Sinatra::ActiveRecordExtension
 
   get '/' do
-    'Hello World'
+    # Get all the spaces listed by the user with id 1
+    User.find_by(id: 1).spaces
+ 
+    
+
+    # "SELECT first_name FROM spaces JOIN users ON (spaces.user_id = users.id);"
+    erb(:index)
   end
 
   run! if app_file == $PROGRAM_NAME
