@@ -15,4 +15,22 @@ feature 'Log in' do
     expect(page.current_path).to eq('/')
     expect(page).to have_content 'Welcome to MakersBnB!'
   end
+
+  scenario 'wrong email and is redirected' do
+    visit('/sign_in')
+    fill_in('email', with: 'wrong_test@test.com')
+    fill_in('password', with: 'test12')
+    click_button('Sign in')
+    expect(page).to have_content 'One of the required field is empty or contains invalid data; please check your input.'
+    expect(page.current_path).to eq('/sign_in')
+  end
+
+  scenario 'wrong password and is redirected' do
+    visit('/sign_in')
+    fill_in('email', with: 'test@test.com')
+    fill_in('password', with: 'wrongtest12')
+    click_button('Sign in')
+    expect(page).to have_content 'One of the required field is empty or contains invalid data; please check your input.'
+    expect(page.current_path).to eq('/sign_in')
+  end
 end
