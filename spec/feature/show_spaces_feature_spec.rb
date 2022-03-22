@@ -20,6 +20,6 @@ feature 'showing property names and description' do
     expect(page).to have_content('Nice and spacious. Must like dogs')
     expect(page).to have_content('The White House')
     expect(page).to have_content('Recent new hosts, looking to improve reputation')
-    
+
   end
 end
