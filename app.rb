@@ -29,6 +29,14 @@ class MakersBnB < Sinatra::Base
     erb(:index)
   end
 
+  get '/spaces/list' do
+    erb :list
+  end
+
+  get '/spaces' do
+    @spaces = Space.all
+    erb :spaces
+  end
 
   get '/spaces/:id' do
     @space = Space.find_by(id: params[:id])
@@ -55,6 +63,7 @@ class MakersBnB < Sinatra::Base
   post '/registrations' do
     user = User.new(email: params[:email], first_name: params[:first_name], last_name: params[:last_name], password: "")
     user.password = params[:password]
+
     begin 
       user.save!
     rescue ActiveRecord::RecordInvalid
@@ -90,6 +99,14 @@ class MakersBnB < Sinatra::Base
   delete '/sessions' do
     session.delete(:user_id)
     redirect '/sign_in'
+
+    user.save!
+    redirect('/')
+  end
+
+  post '/spaces/list' do
+    Space.create(name: params[:name], description: params[:description], price: params[:price], available_from: params[:available_from], available_to: params[:available_to], picture: nil)
+    redirect '/spaces'
   end
 
   run! if app_file == $PROGRAM_NAME

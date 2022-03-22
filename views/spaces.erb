@@ -1,0 +1,12 @@
+<a href='/spaces/list'><button type='button' name='Add listing'>Add listing</button></a>
+
+<ul>
+  <% @spaces.each do |space| %>
+    <li>
+      <a href = "/spaces/<%= space.id %>" target="_self">
+        <%= space.name %>
+      </a>
+      - <%= space.description %>
+    </li>
+  <% end %>
+</ul>
