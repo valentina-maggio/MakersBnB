@@ -13,6 +13,7 @@ gem 'sinatra'
 gem 'sinatra-activerecord', '~> 2.0'
 gem 'sinatra-contrib'
 gem 'rerun'
+gem 'sinatra-flash'
 gem 'webrick'
 
 group :test do
