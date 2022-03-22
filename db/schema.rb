@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_21_165736) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_22_101419) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bookings", force: :cascade do |t|
+    t.bigint "space_id"
+    t.bigint "user_id"
+    t.datetime "date"
+    t.bigint "status_id"
+    t.index ["space_id"], name: "index_bookings_on_space_id"
+    t.index ["status_id"], name: "index_bookings_on_status_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
 
   create_table "spaces", force: :cascade do |t|
     t.bigint "user_id"
@@ -23,6 +33,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_21_165736) do
     t.datetime "available_from"
     t.datetime "available_to"
     t.index ["user_id"], name: "index_spaces_on_user_id"
+  end
+
+  create_table "statuses", force: :cascade do |t|
+    t.string "status_value"
   end
 
   create_table "users", force: :cascade do |t|
