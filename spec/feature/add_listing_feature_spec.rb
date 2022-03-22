@@ -1,7 +1,8 @@
 feature 'add listing' do
   scenario 'user can add a listing to the list of spaces' do
+    visit '/spaces'
 
-    visit '/spaces/list'
+    click_link 'Add listing'
 
     fill_in 'name', with: 'the pyramids'
     fill_in 'description', with: 'old-fashioned interior'
