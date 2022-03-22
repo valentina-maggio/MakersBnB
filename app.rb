@@ -52,8 +52,10 @@ class MakersBnB < Sinatra::Base
   post '/registrations' do
     user = User.new(email: params[:email], first_name: params[:first_name], last_name: params[:last_name], password: "")
     user.password = params[:password]
-    user.save!
-    redirect('/')
+    if user.save!
+      session[:user_id] = user.id
+      redirect('/')
+    end
   end
 
   run! if app_file == $PROGRAM_NAME
