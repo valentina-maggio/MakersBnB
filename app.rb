@@ -43,6 +43,7 @@ class MakersBnB < Sinatra::Base
     @space = Space.find_by(id: @booking.space_id)
     @status = Status.find_by(id: @booking.status_id)
     erb(:confirmation)
+  end
 
   get '/registrations/new' do
     erb(:'registrations/new')
@@ -53,7 +54,6 @@ class MakersBnB < Sinatra::Base
     user.password = params[:password]
     user.save!
     redirect('/')
-
   end
 
   run! if app_file == $PROGRAM_NAME
