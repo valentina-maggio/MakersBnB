@@ -124,10 +124,12 @@ GEM
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.1.0)
+    webrick (1.7.0)
     xpath (3.2.0)
       nokogiri (~> 1.8)
 
 PLATFORMS
+  arm64-darwin-20
   arm64-darwin-21
   x86_64-darwin-21
 
@@ -146,9 +148,10 @@ DEPENDENCIES
   sinatra
   sinatra-activerecord (~> 2.0)
   sinatra-contrib
+  webrick
 
 RUBY VERSION
    ruby 3.0.0p0
 
 BUNDLED WITH
-   2.3.6
+   2.3.8
