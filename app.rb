@@ -27,6 +27,11 @@ class MakersBnB < Sinatra::Base
   end
 
 
+  get '/spaces' do
+    @spaces = Space.all
+    erb :spaces
+
+
   get '/spaces/:id' do
     @space = Space.find_by(id: params[:id])
     # Availability logic here
@@ -54,6 +59,7 @@ class MakersBnB < Sinatra::Base
     user.password = params[:password]
     user.save!
     redirect('/')
+
   end
 
   run! if app_file == $PROGRAM_NAME
