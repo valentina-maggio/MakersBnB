@@ -19,6 +19,7 @@ class MakersBnB < Sinatra::Base
   register Sinatra::Flash
 
   enable :sessions
+  enable :method_overide
 
   get '/' do
     # Get all the spaces listed by the user with id 1
@@ -84,6 +85,11 @@ class MakersBnB < Sinatra::Base
       flash[:notice] = 'One of the required field is empty or contains invalid data; please check your input.'
       redirect '/sign_in'
     end
+  end
+
+  delete '/sessions' do
+    session.delete(:user_id)
+    redirect '/sign_in'
   end
 
   run! if app_file == $PROGRAM_NAME
