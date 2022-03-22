@@ -26,12 +26,14 @@ class MakersBnB < Sinatra::Base
     erb(:index)
   end
 
+  get '/spaces/list' do
+    erb :list
+  end
 
   get '/spaces' do
     @spaces = Space.all
     erb :spaces
   end
-
 
   get '/spaces/:id' do
     @space = Space.find_by(id: params[:id])
@@ -61,6 +63,11 @@ class MakersBnB < Sinatra::Base
     user.save!
     redirect('/')
 
+  end
+
+  post '/spaces/list' do
+    Space.create(name: params[:name], description: params[:description], price: params[:price], available_from: params[:available_from], available_to: params[:available_to], picture: nil)
+    redirect '/spaces'
   end
 
   run! if app_file == $PROGRAM_NAME
