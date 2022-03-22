@@ -7,6 +7,7 @@ require './lib/user'
 require './lib/space'
 require './lib/booking'
 require './lib/status'
+require 'sinatra/flash'
 
 class MakersBnB < Sinatra::Base
   configure :development do
@@ -15,6 +16,7 @@ class MakersBnB < Sinatra::Base
     # :nocov:
   end
   register Sinatra::ActiveRecordExtension
+  register Sinatra::Flash
 
   enable :sessions
 
@@ -52,9 +54,29 @@ class MakersBnB < Sinatra::Base
   post '/registrations' do
     user = User.new(email: params[:email], first_name: params[:first_name], last_name: params[:last_name], password: "")
     user.password = params[:password]
-    if user.save!
+    begin 
+      user.save!
+    rescue ActiveRecord::RecordInvalid
+      flash[:notice] = 'One of the required field is empty or contains invalid data; please check your input.'
+      redirect '/registrations/new'
+    else
       session[:user_id] = user.id
       redirect('/')
+    end
+  end
+
+  get '/sign_in' do
+    erb(:'sessions/new')
+  end
+
+  post '/sessions' do
+    user = User.find_by(email: params[:email])
+
+    if user.authenticate(params[:password])
+      session[:user_id] = user.id
+      redirect '/'
+    else
+      redirect '/sign_in'
     end
   end
 

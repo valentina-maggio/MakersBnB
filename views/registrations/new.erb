@@ -1,5 +1,9 @@
 <h2>Please enter registration details<h2/>
 
+<h2>
+  <%= flash[:notice] %>
+</h2>
+
 <form class="" action="/registrations" method="post">
   <input type="email" name="email" placeholder="Email"/>
   <input type="password" name="password" placeholder="Password"/>
