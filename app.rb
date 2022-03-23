@@ -52,8 +52,8 @@ class MakersBnB < Sinatra::Base
 
   get '/confirmation' do
     @booking = session[:booking]
-    @space = Space.find_by(id: @booking.space_id)
-    @status = Status.find_by(id: @booking.status_id)
+    @space = @booking.space
+    @status = @booking.status
     erb(:confirmation)
   end
 
