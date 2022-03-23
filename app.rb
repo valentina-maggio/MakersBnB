@@ -19,7 +19,7 @@ class MakersBnB < Sinatra::Base
   register Sinatra::Flash
 
   enable :sessions
-  enable :method_overide
+  enable :method_override
 
   get '/' do
     # Get all the spaces listed by the user with id 1
@@ -56,6 +56,10 @@ class MakersBnB < Sinatra::Base
     erb(:confirmation)
   end
 
+  post '/sign_up' do
+    redirect '/registrations/new'
+  end
+
   get '/registrations/new' do
     erb(:'registrations/new')
   end
@@ -71,8 +75,13 @@ class MakersBnB < Sinatra::Base
       redirect '/registrations/new'
     else
       session[:user_id] = user.id
-      redirect('/')
+      #redirect('/')
+      redirect '/spaces'
     end
+  end
+
+  post '/log_in' do
+    redirect '/sign_in'
   end
 
   get '/sign_in' do
@@ -89,7 +98,8 @@ class MakersBnB < Sinatra::Base
 
     if user.authenticate(params[:password]) 
       session[:user_id] = user.id
-      redirect '/'
+      #redirect '/'
+      redirect '/spaces'
     else
       flash[:notice] = 'One of the required field is empty or contains invalid data; please check your input.'
       redirect '/sign_in'
@@ -98,10 +108,8 @@ class MakersBnB < Sinatra::Base
 
   delete '/sessions' do
     session.delete(:user_id)
-    redirect '/sign_in'
-
-    user.save!
-    redirect('/')
+    #redirect '/sign_in'
+    redirect '/'
   end
 
   post '/spaces/list' do

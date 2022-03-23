@@ -12,7 +12,7 @@ feature 'Sign out' do
     click_button('Sign in')
 
     click_button('Sign out')
-    expect(page.current_path).to eq('/sign_in')
+    expect(page.current_path).to eq('/')
   end
 end
 
