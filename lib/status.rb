@@ -1,3 +1,3 @@
 class Status < ActiveRecord::Base
-  belongs_to :booking
+  has_many :bookings
 end
