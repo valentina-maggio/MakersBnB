@@ -30,15 +30,18 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/spaces/list' do
+    redirect '/' unless session[:user_id]
     erb :list
   end
 
   get '/spaces' do
+    redirect '/' unless session[:user_id]
     @spaces = Space.all
     erb :spaces
   end
 
   get '/spaces/:id' do
+    redirect '/' unless session[:user_id]
     @space = Space.find_by(id: params[:id])
     # Availability logic here
     erb(:select_a_date)
@@ -50,6 +53,7 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/confirmation' do
+    redirect '/' unless session[:user_id]
     @booking = session[:booking]
     @space = @booking.space
     @status = @booking.status
@@ -75,7 +79,6 @@ class MakersBnB < Sinatra::Base
       redirect '/registrations/new'
     else
       session[:user_id] = user.id
-      #redirect('/')
       redirect '/spaces'
     end
   end
@@ -98,7 +101,6 @@ class MakersBnB < Sinatra::Base
 
     if user.authenticate(params[:password]) 
       session[:user_id] = user.id
-      #redirect '/'
       redirect '/spaces'
     else
       flash[:notice] = 'One of the required field is empty or contains invalid data; please check your input.'
@@ -108,7 +110,6 @@ class MakersBnB < Sinatra::Base
 
   delete '/sessions' do
     session.delete(:user_id)
-    #redirect '/sign_in'
     redirect '/'
   end
 

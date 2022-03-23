@@ -13,7 +13,6 @@ feature 'Log in' do
     fill_in('password', with: 'test12')
     click_button('Sign in')
     expect(page.current_path).to eq('/spaces')
-    #expect(page).to have_content 'Welcome to MakersBnB!'
     expect(page).to have_button('Add listing')
   end
 

@@ -14,7 +14,7 @@ feature 'showing property names and description' do
       available_from: Time.now,
       available_to: Time.now)
 
-    visit '/spaces'
+    user_signs_up
 
     expect(page).to have_content('Buckingham Palace')
     expect(page).to have_content('Nice and spacious. Must like dogs')
