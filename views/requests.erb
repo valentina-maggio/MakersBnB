@@ -1,0 +1,12 @@
+<ul>
+  <% @made_requests.each do |request| %>
+    <li>
+        A request has been submitted for <%= request.name%>
+        on <%= request.date.strftime('%d-%m-%Y') %>
+        the status is
+        <%= request.status_id%>
+        <button>Confirm<button>
+    </li>
+  <% end %>
+</ul>
+

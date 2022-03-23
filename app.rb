@@ -35,6 +35,7 @@ class MakersBnB < Sinatra::Base
 
   get '/spaces' do
     @spaces = Space.all
+    p @spaces
     erb :spaces
   end
 
@@ -45,7 +46,7 @@ class MakersBnB < Sinatra::Base
   end
 
   post '/add_booking/:id' do
-    session[:booking] = Booking.create(space_id: params[:id],user_id: 1,date: params[:date],status_id: 1)
+    session[:booking] = Booking.create(space_id: params[:id],user_id: session[:user_id],date: params[:date],status_id: 1)
     redirect '/confirmation'
   end
 
@@ -115,6 +116,16 @@ class MakersBnB < Sinatra::Base
   post '/spaces/list' do
     Space.create(name: params[:name], description: params[:description], price: params[:price], available_from: params[:available_from], available_to: params[:available_to], picture: nil)
     redirect '/spaces'
+  end
+
+  get '/requests/:id' do
+    # @made_requests = Booking.where(user_id: params[:id])
+    @made_requests = Space.joins(:bookings).select("bookings.date, bookings.status_id, spaces.name").where(:user_id => params[:user_id])
+    # p "This is the join: #{(Space.joins(:bookings).select("bookings.id, spaces.name")[1])}"
+    # @made_requests = Booking.where(:user_id => params[:id])
+    # @made_requests = Booking.where("user_id = #{params[:id]}")
+    p @made_requests
+    erb :requests
   end
 
   run! if app_file == $PROGRAM_NAME
