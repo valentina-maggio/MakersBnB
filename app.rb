@@ -35,7 +35,6 @@ class MakersBnB < Sinatra::Base
 
   get '/spaces' do
     @spaces = Space.all
-    p @spaces
     erb :spaces
   end
 
@@ -119,12 +118,27 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/requests/:id' do
+    user = User.find_by(id: params[:id])
+    @made_requests = user.bookings
+    
+    
+    @received_requests = Space.joins(:bookings).select("bookings.date, bookings.status_id, spaces.name").where(:user_id => params[:user_id])
+    
+    # p "Received requests : #{@received_requests[0].name}"
+    # p "@received_status.status_id #{@received_requests.status_id}"
+    # @status = Status.find_by(status_id: @received_requests.status_id)
+    # p "Received requests: #{@received_requests[0].name}"
+    # p "User spaces: #{user.spaces}"
+    # @space = Space.where(user_id: params[:id])
+    # p "Space: #{space[0]}"
+    # p "Space bookings: #{space.bookings}"
+    # @space_name = Space.find_by(id: request.space_id)
+    # @space_booked = Booking.space
+    # @made_requests = Space.joins(:bookings).select("bookings.date, bookings.status_id, spaces.name").where(:user_id => params[:user_id])
     # @made_requests = Booking.where(user_id: params[:id])
-    @made_requests = Space.joins(:bookings).select("bookings.date, bookings.status_id, spaces.name").where(:user_id => params[:user_id])
     # p "This is the join: #{(Space.joins(:bookings).select("bookings.id, spaces.name")[1])}"
     # @made_requests = Booking.where(:user_id => params[:id])
     # @made_requests = Booking.where("user_id = #{params[:id]}")
-    p @made_requests
     erb :requests
   end
 
