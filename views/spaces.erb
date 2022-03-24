@@ -1,5 +1,5 @@
 <a href='/spaces/list'><button type='button' name='Add listing'>Add listing</button></a>
-<a href='/requests/<%= session[:user_id]%>'><button type='button' name='my_requests'>My requests</button></a>
+<a href='/requests'><button type='button' name='my_requests' id="my_requests">My requests</button></a>
 
 <ul>
   <% @spaces.each do |space| %>

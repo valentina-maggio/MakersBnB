@@ -10,7 +10,10 @@ Space.create(user_id: 3, name: 'Buckingham Palace', description: 'Queens House',
 Space.create(user_id: 2, name: 'The Shard', description: 'Pointy', price: 14440, picture: 'x', available_from: Time.now, available_to: Time.now)
 Space.create(user_id: 5, name: 'Big Ben', description: 'BONG', price: 100400, picture: 'x', available_from: Time.now, available_to: Time.now)
 
+Status.create(status: 'pending')
 Status.create(status: 'confirmed')
+Status.create(status: 'rejected')
+
 
 
 Booking.create(space_id: 1 ,user_id: 1,date: Time.new(2022, 5, 2, 12) ,status_id: 1)
