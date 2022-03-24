@@ -1,8 +1,9 @@
-User.create(first_name: 'Rob', last_name: 'Makers', email: 'r@r.com', password_digest: 'r')
-User.create(first_name: 'Joe', last_name: 'Makers', email: 'j@j.com', password_digest: 'j')
-User.create(first_name: 'Phil', last_name: 'Makers', email: 'p@p.com', password_digest: 'p')
-User.create(first_name: 'Felix', last_name: 'Makers', email: 'f@f.com', password_digest: 'f')
-User.create(first_name: 'Valentina', last_name: 'Makers', email: 'v@v.com', password_digest: 'v')
+# Passwords are all 'test'
+User.create(first_name: 'Rob', last_name: 'Makers', email: 'r@r.com', password_digest: '$2a$12$UQSjfRgb7T0iPTKp23JfgeJXYDoItn3Ex2qHmEXoTms8qUB51LKBW')
+User.create(first_name: 'Joe', last_name: 'Makers', email: 'j@j.com', password_digest: '$2a$12$UQSjfRgb7T0iPTKp23JfgeJXYDoItn3Ex2qHmEXoTms8qUB51LKBW')
+User.create(first_name: 'Phil', last_name: 'Makers', email: 'p@p.com', password_digest: '$2a$12$UQSjfRgb7T0iPTKp23JfgeJXYDoItn3Ex2qHmEXoTms8qUB51LKBW')
+User.create(first_name: 'Felix', last_name: 'Makers', email: 'f@f.com', password_digest: '$2a$12$UQSjfRgb7T0iPTKp23JfgeJXYDoItn3Ex2qHmEXoTms8qUB51LKBW')
+User.create(first_name: 'Valentina', last_name: 'Makers', email: 'v@v.com', password_digest: '$2a$12$UQSjfRgb7T0iPTKp23JfgeJXYDoItn3Ex2qHmEXoTms8qUB51LKBW')
 
 Space.create(user_id: 1, name: 'Makers', description: 'Big warehouse', price: 10000, picture: 'x', available_from: Time.now, available_to: Time.now)
 Space.create(user_id: 3, name: 'Buckingham Palace', description: 'Queens House', price: 898979, picture: 'x', available_from: Time.now, available_to: Time.now)
