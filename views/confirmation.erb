@@ -1,1 +1,10 @@
-Your booking for <%= @space.name %> for <%= @booking.date %> is <%= @status.status %>
+Your booking for <%= @space.name %> for <%= @booking.date %> is pending
+
+<form class="" action="/spaces" method="get">
+  <input type="submit" value="View more spaces"/>
+</form>
+
+
+<form class="" action="/requests" method="get">
+  <input type="submit" value="See your bookings"/>
+</form>

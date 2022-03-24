@@ -11,9 +11,19 @@
 <h2>Requests you have received:</h2>
 <ul>
   <% @user_spaces.each do |space| %>
-    <% space.bookings.each do |booking|%>
+    <% space.bookings.order(id: :asc).each do |booking|%>
     <li>
-       <p> Booking: <%= booking.space.name %> on <%= booking.date %> is <%= booking.status.status %></p>
+      <p> Booking: <%= booking.space.name %> on <%= booking.date %> is <%= booking.status.status %></p>
+
+      <form class="" action="/requests/update/<%= booking.id %>" method="post">
+      <input type='hidden' name='_method' value="PATCH">
+      <input type="submit" name="status_update" value="Confirm booking"/>
+      </form>
+
+      <form class="" action="/requests/update/<%= booking.id %>" method="post">
+      <input type='hidden' name='_method' value="PATCH">
+      <input type="submit" name="status_update" value="Reject booking"/>
+      </form>
         
     </li>
     <%end%>

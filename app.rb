@@ -126,13 +126,22 @@ class MakersBnB < Sinatra::Base
     redirect '/spaces'
   end
 
-  get '/requests/:id' do
+  get '/requests' do
     redirect '/' unless session[:user_id]
     user = User.find_by(id: session[:user_id])
-    @made_requests = user.bookings
+    @made_requests = user.bookings.order(id: :asc)
     
     @user_spaces = user.spaces
     erb :requests
+  end
+
+  patch '/requests/update/:id' do
+    booking = Booking.find_by(id: params[:id])
+    p params[:status_update]
+    booking.status_id = 2 if params[:status_update] == 'Confirm booking'
+    booking.status_id = 3 if params[:status_update] == 'Reject booking'
+    booking.save!
+    redirect '/requests'
   end
 
   run! if app_file == $PROGRAM_NAME
