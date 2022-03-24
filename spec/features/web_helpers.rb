@@ -8,32 +8,48 @@ def user_signs_up
   click_button('Sign up')
 end
 
+def user_signs_up2
+  visit '/'
+  click_button('Sign up')
+  fill_in('email', with: 'f@f.com')
+  fill_in('password', with: 'test12')
+  fill_in('first_name', with: 'Feli')
+  fill_in('last_name', with: 'Taljaad')
+  click_button('Sign up')
+end
+
 def create_spaces
+  user_signs_up
   Space.create(name: 'Buckingham Palace',
     description: 'Nice and spacious. Must like dogs', 
     price: 1000000,
     picture: nil,
     available_from: Time.new(2022, 4, 1, 11),
-    available_to: Time.new(2022, 4, 12, 11))
+    available_to: Time.new(2022, 4, 12, 11),
+    user_id: 1)
   Space.create(name: 'The White House',
     description: 'Recent new hosts, looking to improve reputation', 
     price: 1000000,
     picture: nil,
     available_from: Time.new(2022, 4, 2, 11),
-    available_to: Time.new(2022, 4, 4, 11))
+    available_to: Time.new(2022, 4, 4, 11),
+    user_id: 1)
     Space.create(name: 'The Shard',
     description: 'Pointy, with beautiful view', 
     price: 8000000,
     picture: nil,
     available_from: Time.new(2022, 5, 1, 11),
-    available_to: Time.new(2022, 5, 12, 11))
+    available_to: Time.new(2022, 5, 12, 11),
+    user_id: 1)
     Space.create(name: 'Big Ben',
     description: 'A big noisy, but nice', 
     price: 1500000,
     picture: nil,
     available_from: Time.new(2022, 3, 28, 11),
-    available_to: Time.new(2022, 6, 5, 11))
-  user_signs_up
+    available_to: Time.new(2022, 6, 5, 11),
+    user_id: 1)
+    user_logs_out
+    user_signs_up2
 
 end
 

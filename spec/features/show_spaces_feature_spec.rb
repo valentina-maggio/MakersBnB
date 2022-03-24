@@ -5,10 +5,11 @@ feature 'showing property names and description' do
   end
 
   scenario 'navigating to /spaces shows all spaces in database' do
-    expect(page).to have_content('Buckingham Palace')
     expect(page).to have_content('Nice and spacious. Must like dogs')
-    expect(page).to have_content('The White House')
     expect(page).to have_content('Recent new hosts, looking to improve reputation')
+    expect(page).to have_content('Pointy, with beautiful view')
+    expect(page).to have_content('A big noisy, but nice')
+
   end
 
   scenario 'navigating to /spaces has date selectors' do
