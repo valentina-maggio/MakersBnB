@@ -1,14 +1,4 @@
-<a href='/spaces/list'><button type='button' name='Add listing'>Add listing</button></a>
-
-<br>
-<br>
-
-<h2> Select your available dates </h2>
-<form action='/spaces/available' method='post'>
-  <input type='date' name='available_from'/>
-  <input type='date' name='available_to'/>
-  <input type='submit' value='Submit'/>
-</form>
+<h2>Available spaces for your selected dates </h2>
 
 <ul>
   <% @spaces.each do |space| %>
