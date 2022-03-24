@@ -119,30 +119,11 @@ class MakersBnB < Sinatra::Base
   end
 
   get '/requests/:id' do
-    user = User.find_by(id: params[:id])
+    redirect '/' unless session[:user_id]
+    user = User.find_by(id: session[:user_id])
     @made_requests = user.bookings
     
     @user_spaces = user.spaces
-    
-  
-
-    # @received_requests = Space.joins(:bookings).select("bookings.date, bookings.status_id, spaces.name").where(:user_id => params[:user_id])
-    
-    # p "Received requests : #{@received_requests[0].name}"
-    # p "@received_status.status_id #{@received_requests.status_id}"
-    # @status = Status.find_by(status_id: @received_requests.status_id)
-    # p "Received requests: #{@received_requests[0].name}"
-    # p "User spaces: #{user.spaces}"
-    # @space = Space.where(user_id: params[:id])
-    # p "Space: #{space[0]}"
-    # p "Space bookings: #{space.bookings}"
-    # @space_name = Space.find_by(id: request.space_id)
-    # @space_booked = Booking.space
-    # @made_requests = Space.joins(:bookings).select("bookings.date, bookings.status_id, spaces.name").where(:user_id => params[:user_id])
-    # @made_requests = Booking.where(user_id: params[:id])
-    # p "This is the join: #{(Space.joins(:bookings).select("bookings.id, spaces.name")[1])}"
-    # @made_requests = Booking.where(:user_id => params[:id])
-    # @made_requests = Booking.where("user_id = #{params[:id]}")
     erb :requests
   end
 
