@@ -22,10 +22,6 @@ class MakersBnB < Sinatra::Base
   enable :method_override
 
   get '/' do
-    # Get all the spaces listed by the user with id 1
-    #User.find_by(id: 1).spaces
-
-    # "SELECT first_name FROM spaces JOIN users ON (spaces.user_id = users.id);"
     erb(:index)
   end
 
@@ -38,6 +34,18 @@ class MakersBnB < Sinatra::Base
     redirect '/' unless session[:user_id]
     @spaces = Space.all
     erb :spaces
+  end
+
+  post '/spaces/available' do
+    session[:desired_start_date] = params[:available_from]
+    session[:desired_end_date] = params[:available_to]
+    redirect '/spaces/available'
+  end
+
+  get '/spaces/available' do
+    redirect '/' unless session[:user_id]
+    @spaces = Space.where('available_from <= ? AND ? <= available_to', session[:desired_end_date].to_date, session[:desired_start_date].to_date)
+    erb :available_spaces
   end
 
   get '/spaces/:id' do
