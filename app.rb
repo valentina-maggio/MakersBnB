@@ -48,7 +48,7 @@ class MakersBnB < Sinatra::Base
   end
 
   post '/add_booking/:id' do
-    session[:booking] = Booking.create(space_id: params[:id],user_id: 1,date: params[:date],status_id: 1)
+    session[:booking] = Booking.create(space_id: params[:id],user_id: session[:user_id],date: params[:date],status_id: 1)
     redirect '/confirmation'
   end
 
@@ -114,8 +114,36 @@ class MakersBnB < Sinatra::Base
   end
 
   post '/spaces/list' do
-    Space.create(name: params[:name], description: params[:description], price: params[:price], available_from: params[:available_from], available_to: params[:available_to], picture: nil)
+    Space.create(name: params[:name], description: params[:description], price: params[:price], available_from: params[:available_from], available_to: params[:available_to], picture: nil, user_id: session[:user_id])
     redirect '/spaces'
+  end
+
+  get '/requests/:id' do
+    user = User.find_by(id: params[:id])
+    @made_requests = user.bookings
+    
+    @user_spaces = user.spaces
+    
+  
+
+    # @received_requests = Space.joins(:bookings).select("bookings.date, bookings.status_id, spaces.name").where(:user_id => params[:user_id])
+    
+    # p "Received requests : #{@received_requests[0].name}"
+    # p "@received_status.status_id #{@received_requests.status_id}"
+    # @status = Status.find_by(status_id: @received_requests.status_id)
+    # p "Received requests: #{@received_requests[0].name}"
+    # p "User spaces: #{user.spaces}"
+    # @space = Space.where(user_id: params[:id])
+    # p "Space: #{space[0]}"
+    # p "Space bookings: #{space.bookings}"
+    # @space_name = Space.find_by(id: request.space_id)
+    # @space_booked = Booking.space
+    # @made_requests = Space.joins(:bookings).select("bookings.date, bookings.status_id, spaces.name").where(:user_id => params[:user_id])
+    # @made_requests = Booking.where(user_id: params[:id])
+    # p "This is the join: #{(Space.joins(:bookings).select("bookings.id, spaces.name")[1])}"
+    # @made_requests = Booking.where(:user_id => params[:id])
+    # @made_requests = Booking.where("user_id = #{params[:id]}")
+    erb :requests
   end
 
   run! if app_file == $PROGRAM_NAME

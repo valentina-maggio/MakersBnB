@@ -1,0 +1,22 @@
+<h2>Requests you have made:</h2>
+<ul>
+  <% @made_requests.each do |request| %>
+    <li>
+       <p> Booking: <%= request.space.name %> on <%= request.date %> </p>
+        Status: <%= request.status.status%>
+    </li>
+  <% end %>
+</ul>
+
+<h2>Requests you have received:</h2>
+<ul>
+  <% @user_spaces.each do |space| %>
+    <% space.bookings.each do |booking|%>
+    <li>
+       <p> Booking: <%= booking.space.name %> on <%= booking.date %> is <%= booking.status.status %></p>
+        
+    </li>
+    <%end%>
+  <% end %>
+</ul>
+
