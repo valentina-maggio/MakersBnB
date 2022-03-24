@@ -10,14 +10,13 @@
 
 <h2>Requests you have received:</h2>
 <ul>
-  <% @received_requests.each do |request| %>
+  <% @user_spaces.each do |space| %>
+    <% space.bookings.each do |booking|%>
     <li>
-       <p> Booking: <%= request.name %> on <%= request.date.strftime('%d-%m-%Y') %></p>
+       <p> Booking: <%= booking.space.name %> on <%= booking.date %> is <%= booking.status.status %></p>
         
     </li>
+    <%end%>
   <% end %>
 </ul>
 
-<%# on <%= request.date %> </p>
-        <%# Status: <%= request.status.status%> %> %>
-        <%# <p>Status: <%=request.status.status%> %>

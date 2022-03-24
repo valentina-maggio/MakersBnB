@@ -113,7 +113,7 @@ class MakersBnB < Sinatra::Base
   end
 
   post '/spaces/list' do
-    Space.create(name: params[:name], description: params[:description], price: params[:price], available_from: params[:available_from], available_to: params[:available_to], picture: nil)
+    Space.create(name: params[:name], description: params[:description], price: params[:price], available_from: params[:available_from], available_to: params[:available_to], picture: nil, user_id: session[:user_id])
     redirect '/spaces'
   end
 
@@ -121,8 +121,11 @@ class MakersBnB < Sinatra::Base
     user = User.find_by(id: params[:id])
     @made_requests = user.bookings
     
+    @user_spaces = user.spaces
     
-    @received_requests = Space.joins(:bookings).select("bookings.date, bookings.status_id, spaces.name").where(:user_id => params[:user_id])
+  
+
+    # @received_requests = Space.joins(:bookings).select("bookings.date, bookings.status_id, spaces.name").where(:user_id => params[:user_id])
     
     # p "Received requests : #{@received_requests[0].name}"
     # p "@received_status.status_id #{@received_requests.status_id}"
