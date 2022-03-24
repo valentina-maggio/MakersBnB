@@ -27,12 +27,9 @@ feature 'Confirm request' do
       user_logs_out
 
       user_signs_in('p@p.com', 'test')
-      #p page.current_path
 
       click_link(id: 'my_requests')
-      p page.current_path
       click_button('Confirm booking')
-      p page.current_path
 
       user_logs_out
 

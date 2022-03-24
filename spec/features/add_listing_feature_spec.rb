@@ -1,6 +1,9 @@
 feature 'add listing' do
   scenario 'user can add a listing to the list of spaces' do
-    user_signs_up
+    User.create(first_name: 'Rob', last_name: 'Oman', email: 'r@r.com', password_digest: '$2a$12$UQSjfRgb7T0iPTKp23JfgeJXYDoItn3Ex2qHmEXoTms8qUB51LKBW')
+    User.create(first_name: 'Phil', last_name: 'Bligh', email: 'p@p.com', password_digest: '$2a$12$UQSjfRgb7T0iPTKp23JfgeJXYDoItn3Ex2qHmEXoTms8qUB51LKBW')
+
+    user_signs_in('r@r.com', 'test')
     click_link 'Add listing'
 
     fill_in 'name', with: 'the pyramids'
@@ -14,6 +17,12 @@ feature 'add listing' do
     end
 
     click_button 'Submit'
+
+    user_logs_out
+
+    user_signs_in('p@p.com', 'test')
+
+    
 
     expect(current_path).to eq '/spaces'
 
