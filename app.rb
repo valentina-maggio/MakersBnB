@@ -32,7 +32,7 @@ class MakersBnB < Sinatra::Base
 
   get '/spaces' do
     redirect '/' unless session[:user_id]
-    @spaces = Space.all
+    @spaces = Space.all.where.not(user_id: session[:user_id])
     erb :spaces
   end
 
