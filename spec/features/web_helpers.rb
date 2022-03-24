@@ -34,6 +34,7 @@ def create_spaces
     available_from: Time.new(2022, 3, 28, 11),
     available_to: Time.new(2022, 6, 5, 11))
   user_signs_up
+
 end
 
 def user_signs_in(email, password)

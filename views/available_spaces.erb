@@ -1,0 +1,17 @@
+<h2>Available spaces for your selected dates </h2>
+
+<ul>
+  <% @spaces.each do |space| %>
+    <li>
+      <a href = "/spaces/<%= space.id %>" target="_self">
+        <%= space.name %>
+      </a>
+      - <%= space.description %>
+    </li>
+  <% end %>
+</ul>
+
+<form class="" action="/sessions" method="post">
+  <input type="hidden" name="_method" value="DELETE"/>
+  <input type="submit" value="Sign out"/>
+<form/>

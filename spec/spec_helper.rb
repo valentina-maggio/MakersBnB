@@ -7,7 +7,7 @@ require 'capybara/rspec'
 require 'rspec'
 require 'database_cleaner/active_record'
 require 'active_support'
-require 'features/web_helper'
+require 'features/web_helpers'
 
 DatabaseCleaner.strategy = :truncation
 
