@@ -27,13 +27,17 @@ feature 'Confirm request' do
       user_logs_out
 
       user_signs_in('p@p.com', 'test')
-      click_link('my_requests')
+      #p page.current_path
+
+      click_link(id: 'my_requests')
       p page.current_path
       click_button('Confirm booking')
+      p page.current_path
+
       user_logs_out
 
       user_signs_in('f@f.com', 'test')
-      click_button(name: 'my_requests')
+      click_link(id: 'my_requests')
 
       expect(page).to have_content('Status: confirmed')
 

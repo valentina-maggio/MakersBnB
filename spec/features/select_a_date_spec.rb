@@ -9,7 +9,7 @@ feature 'select a date' do
     end
     click_button 'Submit' 
 
-    expect(page).to have_text ('Your booking for Makers for 01-04-2022 is confirmed')
+    expect(page).to have_text ('Your booking for Makers for 01-04-2022 is pending')
   end
 
 end
