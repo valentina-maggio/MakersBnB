@@ -1,7 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="style.css?v=1.1">
+</head>
+<body>
+
 <form class="" action="/spaces" method="get">
   <input type="submit" value="View more spaces"/>
 </form>
 
+<div class='requests_made'>
 <h2>Requests you have made:</h2>
 <ul>
   <% @made_requests.each do |request| %>
@@ -11,7 +19,9 @@
     </li>
   <% end %>
 </ul>
+</div>
 
+<div class='requests_received'>
 <h2>Requests you have received:</h2>
 <ul>
   <% @user_spaces.each do |space| %>
@@ -33,4 +43,7 @@
     <%end%>
   <% end %>
 </ul>
+</div>
 
+</body>
+</html>

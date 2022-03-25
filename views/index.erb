@@ -1,18 +1,50 @@
-<h1>Welcome to MakersBnB!</h1>
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="style.css?v=1.1">
+</head>
+<body>
 
-
-<h2>Join us today</h2>
-
-  <form action='/sign_up' method='post'>
-    <input type="submit" value="Sign up">
-  </form>
+<div class='top_bar'>
+  <div class='top'>
+    <h1>Welcome to MakersBnB!</h1>
+  </div>
+</div>
 
 <br>
-<br>
+
+<div class='join'>
+  <h2>Book your stay now</h2>
+
+    <form action='/sign_up' method='post'>
+      <input type="submit" value="Sign up">
+    </form>
+</div>
+
 <br>
 
-<h3>Already have an account?</h3>
 
-  <form action='/log_in' method='post'>
-    <input type="submit" value="Sign in">
-  </form>
+<div class='login'>
+  <h3>Already have an account?</h3>
+
+    <form action='/log_in' method='post'>
+      <input type="submit" value="Sign in">
+    </form>
+</div>
+
+<br>
+
+<div class="row">
+  <div class="column">
+    <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MjB8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=800&q=60" alt="Room" style="width:100%">
+  </div>
+  <div class="column">
+    <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=60" alt="Houses" style="width:100%">
+  </div>
+  <div class="column">
+    <img src="https://images.unsplash.com/photo-1528759335187-3b683174c86a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTE3fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60" alt="Sea" style="width:100%">
+  </div>
+</div>
+
+  </body>
+</html>

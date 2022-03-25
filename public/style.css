@@ -1,0 +1,105 @@
+body {
+  margin: 0; 
+  padding: 0 100px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
+  font-size: 18px;
+} 
+
+.top { 
+  margin: 0; 
+  padding: 0;
+  width: 100%; 
+  height: 60px;  
+  display: flex;  
+  align-items: center; 
+  justify-content: center;
+  margin-top: 50px;
+} 
+
+.top div {
+  text-align: center;
+} 
+
+.top div h1 {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; 
+  font-size: 28px;
+}
+
+.select_dates {
+  text-align: center;
+  border: solid 5px #9EE2F0; 
+  border-radius: 20px;
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+  display: block;
+}
+
+.dates { 
+  margin: 0; 
+  padding: 10px;
+  width: 50%; 
+  height: 150px;    
+  align-items: center; 
+  justify-content: center;
+  margin-top: 10px;
+  display: flex;
+  border: solid 5px #9EE2F0; 
+  border-radius: 20px;
+} 
+
+
+
+input[type=submit]{
+  width: fit-content;
+  padding: 7px;
+  margin: 10px 0 5px 0;
+  display: flex;
+  border: none;
+  background: #9EE2F0;
+  border-radius: 10px;
+  }
+
+  .date_submit {
+    height: 40px;
+    position: relative;
+  }
+
+
+button {
+  width: 10%;
+  padding: 7px;
+  margin: 10px 0 5px 0;
+  display: inline-block;
+  border: none;
+  background: #9EE2F0;
+  border-radius: 10px;
+  }
+
+  .center {
+    text-align: right;
+    width: 170px;
+  }
+
+  .row {
+    display: flex;
+  }
+  
+  .column {
+    flex: 33.33%;
+    padding: 5px;
+  }
+
+  .logout {
+    height: 40px;
+    margin-top: 1px;
+    margin-right: 100px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+  }
+
+
