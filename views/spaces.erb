@@ -5,22 +5,11 @@
 <br>
 
 <h2> Select your available dates </h2>
-<form action='/spaces/available' method='post'>
+<form action='/spaces/available' method='post' id='dates_form'>
   <input type='date' name='available_from'/>
   <input type='date' name='available_to'/>
   <input type='submit' value='Submit'/>
 </form>
-
-<ul>
-  <% @spaces.each do |space| %>
-    <li>
-      <a href = "/spaces/<%= space.id %>" target="_self">
-        <%= space.name %>
-      </a>
-      - <%= space.description %>
-    </li>
-  <% end %>
-</ul>
 
 <form class="" action="/sessions" method="post">
   <input type="hidden" name="_method" value="DELETE"/>

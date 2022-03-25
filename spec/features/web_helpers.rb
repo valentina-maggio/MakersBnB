@@ -20,6 +20,7 @@ end
 
 def create_spaces
   user_signs_up
+
   Space.create(name: 'Buckingham Palace',
     description: 'Nice and spacious. Must like dogs', 
     price: 1000000,
@@ -34,23 +35,23 @@ def create_spaces
     available_from: Time.new(2022, 4, 2, 11),
     available_to: Time.new(2022, 4, 4, 11),
     user_id: 1)
-    Space.create(name: 'The Shard',
+  Space.create(name: 'The Shard',
     description: 'Pointy, with beautiful view', 
     price: 8000000,
     picture: nil,
     available_from: Time.new(2022, 5, 1, 11),
     available_to: Time.new(2022, 5, 12, 11),
     user_id: 1)
-    Space.create(name: 'Big Ben',
+  Space.create(name: 'Big Ben',
     description: 'A big noisy, but nice', 
     price: 1500000,
     picture: nil,
     available_from: Time.new(2022, 3, 28, 11),
     available_to: Time.new(2022, 6, 5, 11),
     user_id: 1)
-    user_logs_out
-    user_signs_up2
 
+  user_logs_out
+  user_signs_up2
 end
 
 def user_signs_in(email, password)

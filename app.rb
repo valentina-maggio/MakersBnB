@@ -50,6 +50,9 @@ class MakersBnB < Sinatra::Base
 
   get '/spaces/:id' do
     redirect '/' unless session[:user_id]
+    p session[:desired_start_date]
+    p (session[:desired_start_date].to_date..session[:desired_end_date].to_date).map{ |date| date.strftime("%b %d") }
+
     @space = Space.find_by(id: params[:id])
     # Availability logic here
     erb(:select_a_date)
