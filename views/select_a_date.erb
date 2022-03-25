@@ -15,7 +15,7 @@
     <option>Select date</option>
     <% @available_date_arr.each do |date| %>
       <option>
-      <%= date %>
+      <%= date.strftime('%d/%m/%Y') %>
       </option>
     <% end %>
   </select>
