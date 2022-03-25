@@ -44,7 +44,8 @@ class MakersBnB < Sinatra::Base
 
   get '/spaces/available' do
     redirect '/' unless session[:user_id]
-    @spaces = Space.where('available_from <= ? AND ? <= available_to', session[:desired_end_date].to_date, session[:desired_start_date].to_date)
+    @spaces = Space.all.where.not(user_id: session[:user_id])
+    @spaces = @spaces.where('available_from <= ? AND ? <= available_to', session[:desired_end_date].to_date, session[:desired_start_date].to_date)
     erb :available_spaces
   end
 
