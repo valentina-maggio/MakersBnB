@@ -1,4 +1,6 @@
 # MakersBnB
+## Description
+MakersBnb is a clone of Airbnb. The user can register, list a space to rent and/or rent a space to stay.
 
 ## Getting Set Up
 1. Run 'bundle install' to install the Gems in the Gemfile
@@ -20,3 +22,14 @@ Click 'My requests' to see any spaces that you have requested bookings for, and 
 From the 'My Requests' page you can confirm or reject any requests for bookings for your properties. The user will see this updated on their 'My requests' page when they log in. 
 
 Click 'Sign Out' to end your session and return to the 'Sign up/Sign In' page.
+
+## Website Welcome Page
+![screenshot]()
+
+## Technologies Used
+* Ruby
+* Sinatra
+* Rspec
+* Capybara
+* Postgres
+* ActiveRecord
