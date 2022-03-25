@@ -1,15 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="style.css?v=1.1">
+</head>
+<body>
+
 <a href='/spaces/list'><button type='button' name='Add listing'>Add listing</button></a>
-<a href='/requests' name='my_requests' id="my_requests">My requests</a>
+<a href='/requests'><button type='button' name='My Requests'>My Requests</button></a>
+
+<div id='logout' class='logout'>
+  <form class="" action="/sessions" method="post">
+    <input type="hidden" name="_method" value="DELETE"/>
+    <input type="submit" value="Sign out"/>
+  </form>
+</div>
 
 <br>
 <br>
 
-<h2> Select your available dates </h2>
-<form action='/spaces/available' method='post'>
-  <input type='date' name='available_from'/>
-  <input type='date' name='available_to'/>
-  <input type='submit' value='Submit'/>
-</form>
+<div class='select_dates'>
+  <h2> Select your available dates </h2>
+
+    <form action='/spaces/available' method='post'>
+      <input type='date' class='center' name='available_from'/>
+      <input type='date' class='center' name='available_to'/>
+      <div id='date_submit' class='date_submit'>
+        <input type='submit' value='Submit'/>
+      </div>
+    </form>
+  </div>
+
+<br>
+<br>
 
 <ul>
   <% @spaces.each do |space| %>
@@ -22,8 +44,8 @@
   <% end %>
 </ul>
 
-<form class="" action="/sessions" method="post">
-  <input type="hidden" name="_method" value="DELETE"/>
-  <input type="submit" value="Sign out"/>
-</form>
+
+
+</body>
+</html>
 

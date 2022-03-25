@@ -1,3 +1,10 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="../style.css?v=1.1">
+</head>
+<body>
+
 <h2>Available spaces for your selected dates </h2>
 
 <ul>
@@ -11,7 +18,12 @@
   <% end %>
 </ul>
 
+<div id='logout' class='logout'>
 <form class="" action="/sessions" method="post">
   <input type="hidden" name="_method" value="DELETE"/>
   <input type="submit" value="Sign out"/>
 <form/>
+</div>
+
+</body>
+</html>

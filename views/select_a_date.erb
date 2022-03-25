@@ -1,6 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="../style.css?v=1.1">
+</head>
+<body>
+
 Please select a date for <%= @space.name %>
 
+
 <form action='/add_booking/<%= @space.id %>' method='post' id="dates_form">
-  <input type='date' name='date' required/>
+  <input type='date' class='center' name='date' required/>
   <input type='submit' value='Submit'/>
 </form>
+
+</body>
+</html>
