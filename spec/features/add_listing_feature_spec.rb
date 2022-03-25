@@ -22,9 +22,12 @@ feature 'add listing' do
 
     user_signs_in('p@p.com', 'test')
 
-    
-
     expect(current_path).to eq '/spaces'
+
+    fill_in name: 'available_from', with: '2022-04-15'
+    fill_in name: 'available_to', with: '2022-07-01'
+
+    click_button 'Submit'
 
     expect(page).to have_content 'the pyramids'
     expect(page).to have_content 'old-fashioned interior'

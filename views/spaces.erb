@@ -19,33 +19,17 @@
 <br>
 
 <div class='select_dates'>
-  <h2> Select your available dates </h2>
-
-    <form action='/spaces/available' method='post'>
-      <input type='date' class='center' name='available_from'/>
-      <input type='date' class='center' name='available_to'/>
-      <div id='date_submit' class='date_submit'>
-        <input type='submit' value='Submit'/>
-      </div>
-    </form>
+<h2> Select your available dates </h2>
+<form action='/spaces/available' method='post' id='dates_form'>
+  <input type='date' class='center' name='available_from'/>
+  <input type='date' class='center' name='available_to'/>
+   <div id='date_submit' class='date_submit'>
+  <input type='submit' value='Submit'/>
   </div>
-
-<br>
-<br>
-
-<ul>
-  <% @spaces.each do |space| %>
-    <li>
-      <a href = "/spaces/<%= space.id %>" target="_self">
-        <%= space.name %>
-      </a>
-      - <%= space.description %>
-    </li>
-  <% end %>
-</ul>
-
-
+</form>
+</div>
 
 </body>
 </html>
+
 

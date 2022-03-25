@@ -5,13 +5,23 @@
 </head>
 <body>
 
-Please select a date for <%= @space.name %>
+
+<p>Please select a date for <%= @space.name %></p>
 
 
 <form action='/add_booking/<%= @space.id %>' method='post' id="dates_form">
-  <input type='date' class='center' name='date' required/>
+
+  <select name="date_selector" required>
+    <option>Select date</option>
+    <% @available_date_arr.each do |date| %>
+      <option>
+      <%= date %>
+      </option>
+    <% end %>
+  </select>
   <input type='submit' value='Submit'/>
 </form>
 
 </body>
 </html>
+

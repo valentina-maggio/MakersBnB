@@ -50,13 +50,19 @@ class MakersBnB < Sinatra::Base
 
   get '/spaces/:id' do
     redirect '/' unless session[:user_id]
+    space = Space.find_by(id: params[:id])
+    available_from = space.available_from
+    available_to = space.available_to
+    @available_date_arr = (available_from.to_date..available_to).map{ |date| date }
+    
+
     @space = Space.find_by(id: params[:id])
     # Availability logic here
     erb(:select_a_date)
   end
 
   post '/add_booking/:id' do
-    session[:booking] = Booking.create(space_id: params[:id],user_id: session[:user_id],date: params[:date],status_id: 1)
+    session[:booking] = Booking.create(space_id: params[:id],user_id: session[:user_id],date: params[:date_selector],status_id: 1)
     redirect '/confirmation'
   end
 
