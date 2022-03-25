@@ -24,7 +24,7 @@ From the 'My Requests' page you can confirm or reject any requests for bookings 
 Click 'Sign Out' to end your session and return to the 'Sign up/Sign In' page.
 
 ## Website Welcome Page
-![screenshot]()
+![screenshot](https://github.com/valentina-maggio/MakersBnB/blob/main/public/images/Screenshot%202022-03-25%20at%2015.59.22.png?raw=true)
 
 ## Technologies Used
 * Ruby
