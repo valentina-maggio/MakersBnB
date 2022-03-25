@@ -13,7 +13,7 @@
       <a href = "/spaces/<%= space.id %>" target="_self">
         <%= space.name %>
       </a>
-      - <%= space.description %>
+      - <%= space.description %> - Price: £<%= '%.2f' % (space.price / 100.0) %> per night
     </li>
   <% end %>
 </ul>
