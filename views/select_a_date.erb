@@ -1,7 +1,7 @@
 <p>Please select a date for <%= @space.name %></p>
 
 <form action='/add_booking/<%= @space.id %>' method='post' id="dates_form">
-  <select name="date_selector">
+  <select name="date_selector" required>
     <option>Select date</option>
     <% @available_date_arr.each do |date| %>
       <option>
