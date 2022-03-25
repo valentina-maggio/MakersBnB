@@ -14,10 +14,10 @@ feature 'select a date' do
       fill_in name: 'available_to', with: '2022-05-01'
     end
     visit '/spaces/1'
-    select '2022-04-01', from: 'date_selector'
+    select '01/04/2022', from: 'date_selector'
     click_button 'Submit' 
 
-    expect(page).to have_text ('Your booking for Buckingham Palace for 01-04-2022 is pending')
+    expect(page).to have_text ('Your booking for Buckingham Palace for 01/04/2022 is pending')
   end
 
 end
