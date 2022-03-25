@@ -4,6 +4,6 @@ class Booking < ActiveRecord::Base
   belongs_to :status
 
   def date
-    super.strftime('%d-%m-%Y')
+    super.strftime('%d/%m/%Y')
   end
 end

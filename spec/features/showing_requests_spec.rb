@@ -8,7 +8,7 @@ feature 'seeing requests' do
     user_signs_in('p@p.com', 'test')
     visit '/requests' 
 
-    expect(page).to have_text ('Booking: Big Ben on 18-03-2022')
+    expect(page).to have_text ('Booking: Big Ben on 18/03/2022')
   end
 
   scenario 'displays a list of bookings the user has received' do
@@ -20,6 +20,6 @@ feature 'seeing requests' do
     user_signs_in('r@r.com', 'test')
     visit '/requests' 
 
-    expect(page).to have_text ('Booking: Big Ben on 18-03-2022')
+    expect(page).to have_text ('Booking: Big Ben on 18/03/2022')
   end
 end
