@@ -66,6 +66,7 @@ input[type=submit]{
   .date_submit {
     height: 40px;
     position: relative;
+    left: 46.5%;
   }
 
 

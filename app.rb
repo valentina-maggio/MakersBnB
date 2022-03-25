@@ -128,7 +128,9 @@ class MakersBnB < Sinatra::Base
   end
 
   post '/spaces/list' do
-    Space.create(name: params[:name], description: params[:description], price: params[:price], available_from: params[:available_from], available_to: params[:available_to], picture: nil, user_id: session[:user_id])
+    price = params[:price].to_f
+    price *= 100
+    Space.create(name: params[:name], description: params[:description], price: price.to_i, available_from: params[:available_from], available_to: params[:available_to], picture: nil, user_id: session[:user_id])
     redirect '/spaces'
   end
 
